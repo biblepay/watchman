@@ -4,7 +4,7 @@ An all-powerful toolset for BiblePay.
 
 [![Build Status](https://travis-ci.org/biblepaypay/Watchman.svg?branch=master)](https://travis-ci.org/biblepaypay/Watchman)
 
-Watchman is an autonomous agent for persisting, processing and automating Biblepay V12.1 governance objects and tasks, and for expanded functions in the upcoming Biblepay V13 release (Evolution).
+Watchman is an autonomous agent for persisting, processing and automating Biblepay V12.1 governance objects and tasks, and for expanded functions in the upcoming Biblepay V13 release (Tribulation).
 
 Watchman is implemented as a Python application that binds to a local version 12.1 biblepayd instance on each Biblepay V12.1 Masternode.
 
