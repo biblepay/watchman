@@ -1,0 +1,2 @@
+# run Biblepay-Watchman every two minutes
+*/2 * * * * cd /home/YOURUSERNAME/watchman && ./venv/bin/python bin/watchman.py >/dev/null 2>&1
