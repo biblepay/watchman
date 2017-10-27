@@ -16,20 +16,20 @@ def test_biblepayd():
     config_text = BiblepayConfig.slurp_config_file(config.biblepay_conf)
     network = 'mainnet'
     is_testnet = False
-    genesis_hash = u'00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6'
+    genesis_hash = u'3b4431310395638c0ed65b40ede4b110d8da70fcc0c2ed4a729fb8e4d78b4452'
     for line in config_text.split("\n"):
         if line.startswith('testnet=1'):
             network = 'testnet'
             is_testnet = True
-            genesis_hash = u'00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c'
-
+            genesis_hash = u'122f423f0912850a871c58f1533dd80be62154bb0c56dfb8cb9ae2b957d1ac10'
+                             
     creds = BiblepayConfig.get_rpc_creds(config_text, network)
     biblepayd = BiblepayDaemon(**creds)
     assert biblepayd.rpc_command is not None
 
     assert hasattr(biblepayd, 'rpc_connection')
 
-    # Biblepay testnet block 0 hash == 00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c
+    # Biblepay testnet block 0 hash == 3b4431310395638c0ed65b40ede4b110d8da70fcc0c2ed4a729fb8e4d78b4452
     # test commands without arguments
     info = biblepayd.rpc_command('getinfo')
     info_keys = [
