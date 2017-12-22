@@ -85,7 +85,7 @@ class GovernanceObject(BaseModel):
 
             for item in golist.values():
                 (go, subobj) = self.import_gobject_from_biblepayd(biblepayd, item)
-        except Exception as e:
+        except (peewee.InternalError, peewee.OperationalError, peewee.ProgrammingError) as e:
             printdbg("Got an error upon import: %s" % e)
 
     @classmethod
@@ -147,7 +147,7 @@ class GovernanceObject(BaseModel):
                 return (govobj, None)
         
             subobj, created = subclass.get_or_create(object_hash=object_hash, defaults=subdikt)
-        except Exception as e:
+        except (peewee.OperationalError, peewee.IntegrityError, decimal.InvalidOperation) as e:
             # in this case, vote as delete, and log the vote in the DB
             printdbg("Got invalid object from biblepayd! %s" % e)
             govobj.vote_delete(biblepayd)
