@@ -142,7 +142,7 @@ class GovernanceObject(BaseModel):
         try:
             newdikt = subdikt.copy()
 	    newdikt['object_hash'] = object_hash
-	    if subclass(**newdikt).is_valid(self) is False:
+	    if subclass(**newdikt).is_valid() is False:
   	        govobj.vote_delete(biblepayd)
                 return (govobj, None)
         
