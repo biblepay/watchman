@@ -10,6 +10,8 @@ default_Watchman_config = os.path.normpath(
 )
 Watchman_config_file = os.environ.get('WATCHMAN_CONFIG', default_Watchman_config)
 Watchman_cfg = BiblepayConfig.tokenize(Watchman_config_file)
+watchman_version="1.1.0"
+min_biblepayd_proto_version_with_watchman_ping = 70207
 
 
 def get_biblepay_conf():
