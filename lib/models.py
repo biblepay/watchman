@@ -140,11 +140,11 @@ class GovernanceObject(BaseModel):
 
         # get/create, then sync payment amounts, etc. from biblepayd - Biblepayd is the master
         try:
-            #newdikt = subdikt.copy()
-	    #newdikt['object_hash'] = object_hash
-	    #if subclass(**newdikt).is_valid() is False:
-  	    #    govobj.vote_delete(biblepayd)
-            #    return (govobj, None)
+            newdikt = subdikt.copy()
+	    newdikt['object_hash'] = object_hash
+	    if subclass(**newdikt).is_valid() is False:
+  	        govobj.vote_delete(biblepayd)
+                return (govobj, None)
         
             subobj, created = subclass.get_or_create(object_hash=object_hash, defaults=subdikt)
         except Exception as e:
