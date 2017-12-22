@@ -140,14 +140,8 @@ class GovernanceObject(BaseModel):
 
         # get/create, then sync payment amounts, etc. from biblepayd - Biblepayd is the master
         try:
-            #newdikt = subdikt.copy()
-	    #newdikt['object_hash'] = object_hash
-	    #if subclass(**newdikt).is_valid() is False:
-  	    #    govobj.vote_delete(biblepayd)
-            #    return (govobj, None)
-        
             subobj, created = subclass.get_or_create(object_hash=object_hash, defaults=subdikt)
-        except Exception as e:
+        except (peewee.OperationalError, peewee.IntegrityError, decimal.InvalidOperation) as e:
             # in this case, vote as delete, and log the vote in the DB
             printdbg("Got invalid object from biblepayd! %s" % e)
             govobj.vote_delete(biblepayd)
